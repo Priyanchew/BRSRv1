@@ -1,0 +1,876 @@
+{
+    "HR": [
+        {
+            "headingNo": "1",
+            "subheadNo": "1",
+            "Qno": "1"
+        },
+        {
+            "headingNo": "1",
+            "subheadNo": "1",
+            "Qno": "2"
+        },
+        {
+            "headingNo": "1",
+            "subheadNo": "1",
+            "Qno": "4"
+        },
+        {
+            "headingNo": "1",
+            "subheadNo": "1",
+            "Qno": "5"
+        },
+        {
+            "headingNo": "1",
+            "subheadNo": "1",
+            "Qno": "6"
+        },
+        {
+            "headingNo": "1",
+            "subheadNo": "1",
+            "Qno": "7"
+        },
+        {
+            "headingNo": "1",
+            "subheadNo": "2",
+            "Qno": "1"
+        },
+        {
+            "headingNo": "1",
+            "subheadNo": "2",
+            "Qno": "2"
+        },
+        {
+            "headingNo": "3",
+            "subheadNo": "1",
+            "Qno": "1"
+        },
+        {
+            "headingNo": "3",
+            "subheadNo": "1",
+            "Qno": "10"
+        },
+        {
+            "headingNo": "3",
+            "subheadNo": "1",
+            "Qno": "13"
+        },
+        {
+            "headingNo": "3",
+            "subheadNo": "1",
+            "Qno": "14"
+        },
+        {
+            "headingNo": "3",
+            "subheadNo": "1",
+            "Qno": "15"
+        },
+        {
+            "headingNo": "3",
+            "subheadNo": "1",
+            "Qno": "2"
+        },
+        {
+            "headingNo": "3",
+            "subheadNo": "1",
+            "Qno": "3"
+        },
+        {
+            "headingNo": "3",
+            "subheadNo": "1",
+            "Qno": "4"
+        },
+        {
+            "headingNo": "3",
+            "subheadNo": "1",
+            "Qno": "5"
+        },
+        {
+            "headingNo": "3",
+            "subheadNo": "1",
+            "Qno": "6"
+        },
+        {
+            "headingNo": "3",
+            "subheadNo": "1",
+            "Qno": "7"
+        },
+        {
+            "headingNo": "3",
+            "subheadNo": "1",
+            "Qno": "8"
+        },
+        {
+            "headingNo": "3",
+            "subheadNo": "1",
+            "Qno": "9"
+        },
+        {
+            "headingNo": "3",
+            "subheadNo": "2",
+            "Qno": "1"
+        },
+        {
+            "headingNo": "3",
+            "subheadNo": "2",
+            "Qno": "2"
+        },
+        {
+            "headingNo": "3",
+            "subheadNo": "2",
+            "Qno": "3"
+        },
+        {
+            "headingNo": "3",
+            "subheadNo": "2",
+            "Qno": "4"
+        },
+        {
+            "headingNo": "3",
+            "subheadNo": "2",
+            "Qno": "5"
+        },
+        {
+            "headingNo": "3",
+            "subheadNo": "2",
+            "Qno": "6"
+        },
+        {
+            "headingNo": "4",
+            "subheadNo": "1",
+            "Qno": "1"
+        },
+        {
+            "headingNo": "4",
+            "subheadNo": "1",
+            "Qno": "2"
+        },
+        {
+            "headingNo": "4",
+            "subheadNo": "2",
+            "Qno": "1"
+        },
+        {
+            "headingNo": "4",
+            "subheadNo": "2",
+            "Qno": "2"
+        },
+        {
+            "headingNo": "4",
+            "subheadNo": "2",
+            "Qno": "3"
+        },
+        {
+            "headingNo": "5",
+            "subheadNo": "1",
+            "Qno": "1"
+        },
+        {
+            "headingNo": "5",
+            "subheadNo": "1",
+            "Qno": "10"
+        },
+        {
+            "headingNo": "5",
+            "subheadNo": "1",
+            "Qno": "2"
+        },
+        {
+            "headingNo": "5",
+            "subheadNo": "1",
+            "Qno": "3"
+        },
+        {
+            "headingNo": "5",
+            "subheadNo": "1",
+            "Qno": "4"
+        },
+        {
+            "headingNo": "5",
+            "subheadNo": "1",
+            "Qno": "5"
+        },
+        {
+            "headingNo": "5",
+            "subheadNo": "1",
+            "Qno": "6"
+        },
+        {
+            "headingNo": "5",
+            "subheadNo": "1",
+            "Qno": "7"
+        },
+        {
+            "headingNo": "5",
+            "subheadNo": "1",
+            "Qno": "8"
+        },
+        {
+            "headingNo": "5",
+            "subheadNo": "1",
+            "Qno": "9"
+        },
+        {
+            "headingNo": "5",
+            "subheadNo": "2",
+            "Qno": "1"
+        },
+        {
+            "headingNo": "5",
+            "subheadNo": "2",
+            "Qno": "2"
+        },
+        {
+            "headingNo": "5",
+            "subheadNo": "2",
+            "Qno": "3"
+        },
+        {
+            "headingNo": "5",
+            "subheadNo": "2",
+            "Qno": "4"
+        },
+        {
+            "headingNo": "5",
+            "subheadNo": "2",
+            "Qno": "5"
+        },
+        {
+            "headingNo": "7",
+            "subheadNo": "1",
+            "Qno": "1"
+        },
+        {
+            "headingNo": "7",
+            "subheadNo": "1",
+            "Qno": "2"
+        },
+        {
+            "headingNo": "7",
+            "subheadNo": "2",
+            "Qno": "1"
+        },
+        {
+            "headingNo": "8",
+            "subheadNo": "1",
+            "Qno": "1"
+        },
+        {
+            "headingNo": "8",
+            "subheadNo": "1",
+            "Qno": "2"
+        },
+        {
+            "headingNo": "8",
+            "subheadNo": "1",
+            "Qno": "3"
+        },
+        {
+            "headingNo": "8",
+            "subheadNo": "2",
+            "Qno": "1"
+        },
+        {
+            "headingNo": "8",
+            "subheadNo": "2",
+            "Qno": "2"
+        },
+        {
+            "headingNo": "8",
+            "subheadNo": "2",
+            "Qno": "4"
+        },
+        {
+            "headingNo": "8",
+            "subheadNo": "2",
+            "Qno": "5"
+        },
+        {
+            "headingNo": "8",
+            "subheadNo": "2",
+            "Qno": "6"
+        }
+    ],
+    "LAW": [
+        {
+            "headingNo": "1",
+            "subheadNo": "1",
+            "Qno": "2"
+        },
+        {
+            "headingNo": "1",
+            "subheadNo": "1",
+            "Qno": "3"
+        }
+    ],
+    "FINANCE": [
+        {
+            "headingNo": "1",
+            "subheadNo": "1",
+            "Qno": "3"
+        },
+        {
+            "headingNo": "5",
+            "subheadNo": "1",
+            "Qno": "3"
+        },
+        {
+            "headingNo": "6",
+            "subheadNo": "2",
+            "Qno": "1"
+        },
+        {
+            "headingNo": "8",
+            "subheadNo": "1",
+            "Qno": "4"
+        },
+        {
+            "headingNo": "8",
+            "subheadNo": "2",
+            "Qno": "4"
+        }
+    ],
+    "LEGAL": [
+        {
+            "headingNo": "1",
+            "subheadNo": "1",
+            "Qno": "5"
+        },
+        {
+            "headingNo": "1",
+            "subheadNo": "1",
+            "Qno": "6"
+        },
+        {
+            "headingNo": "1",
+            "subheadNo": "1",
+            "Qno": "7"
+        },
+        {
+            "headingNo": "5",
+            "subheadNo": "1",
+            "Qno": "1"
+        },
+        {
+            "headingNo": "5",
+            "subheadNo": "1",
+            "Qno": "10"
+        },
+        {
+            "headingNo": "5",
+            "subheadNo": "1",
+            "Qno": "2"
+        },
+        {
+            "headingNo": "5",
+            "subheadNo": "1",
+            "Qno": "4"
+        },
+        {
+            "headingNo": "5",
+            "subheadNo": "1",
+            "Qno": "5"
+        },
+        {
+            "headingNo": "5",
+            "subheadNo": "1",
+            "Qno": "6"
+        },
+        {
+            "headingNo": "5",
+            "subheadNo": "1",
+            "Qno": "7"
+        },
+        {
+            "headingNo": "5",
+            "subheadNo": "1",
+            "Qno": "8"
+        },
+        {
+            "headingNo": "5",
+            "subheadNo": "1",
+            "Qno": "9"
+        },
+        {
+            "headingNo": "5",
+            "subheadNo": "2",
+            "Qno": "1"
+        },
+        {
+            "headingNo": "5",
+            "subheadNo": "2",
+            "Qno": "2"
+        },
+        {
+            "headingNo": "5",
+            "subheadNo": "2",
+            "Qno": "3"
+        },
+        {
+            "headingNo": "5",
+            "subheadNo": "2",
+            "Qno": "4"
+        },
+        {
+            "headingNo": "5",
+            "subheadNo": "2",
+            "Qno": "5"
+        },
+        {
+            "headingNo": "6",
+            "subheadNo": "1",
+            "Qno": "11"
+        },
+        {
+            "headingNo": "6",
+            "subheadNo": "1",
+            "Qno": "12"
+        },
+        {
+            "headingNo": "7",
+            "subheadNo": "1",
+            "Qno": "1"
+        },
+        {
+            "headingNo": "7",
+            "subheadNo": "1",
+            "Qno": "2"
+        },
+        {
+            "headingNo": "7",
+            "subheadNo": "2",
+            "Qno": "1"
+        },
+        {
+            "headingNo": "8",
+            "subheadNo": "1",
+            "Qno": "1"
+        },
+        {
+            "headingNo": "8",
+            "subheadNo": "1",
+            "Qno": "2"
+        },
+        {
+            "headingNo": "8",
+            "subheadNo": "1",
+            "Qno": "3"
+        },
+        {
+            "headingNo": "8",
+            "subheadNo": "2",
+            "Qno": "1"
+        },
+        {
+            "headingNo": "8",
+            "subheadNo": "2",
+            "Qno": "4"
+        },
+        {
+            "headingNo": "8",
+            "subheadNo": "2",
+            "Qno": "5"
+        },
+        {
+            "headingNo": "9",
+            "subheadNo": "1",
+            "Qno": "5"
+        },
+        {
+            "headingNo": "9",
+            "subheadNo": "1",
+            "Qno": "6"
+        },
+        {
+            "headingNo": "9",
+            "subheadNo": "2",
+            "Qno": "1"
+        },
+        {
+            "headingNo": "9",
+            "subheadNo": "2",
+            "Qno": "5"
+        }
+    ],
+    "ENVIRONMENT": [
+        {
+            "headingNo": "2",
+            "subheadNo": "1",
+            "Qno": "1"
+        },
+        {
+            "headingNo": "2",
+            "subheadNo": "1",
+            "Qno": "4"
+        },
+        {
+            "headingNo": "2",
+            "subheadNo": "2",
+            "Qno": "2"
+        },
+        {
+            "headingNo": "2",
+            "subheadNo": "2",
+            "Qno": "4"
+        },
+        {
+            "headingNo": "6",
+            "subheadNo": "1",
+            "Qno": "1"
+        },
+        {
+            "headingNo": "6",
+            "subheadNo": "1",
+            "Qno": "10"
+        },
+        {
+            "headingNo": "6",
+            "subheadNo": "1",
+            "Qno": "11"
+        },
+        {
+            "headingNo": "6",
+            "subheadNo": "1",
+            "Qno": "2"
+        },
+        {
+            "headingNo": "6",
+            "subheadNo": "1",
+            "Qno": "3"
+        },
+        {
+            "headingNo": "6",
+            "subheadNo": "1",
+            "Qno": "4"
+        },
+        {
+            "headingNo": "6",
+            "subheadNo": "1",
+            "Qno": "5"
+        },
+        {
+            "headingNo": "6",
+            "subheadNo": "1",
+            "Qno": "6"
+        },
+        {
+            "headingNo": "6",
+            "subheadNo": "1",
+            "Qno": "7"
+        },
+        {
+            "headingNo": "6",
+            "subheadNo": "1",
+            "Qno": "8"
+        },
+        {
+            "headingNo": "6",
+            "subheadNo": "1",
+            "Qno": "9"
+        },
+        {
+            "headingNo": "6",
+            "subheadNo": "2",
+            "Qno": "1"
+        },
+        {
+            "headingNo": "6",
+            "subheadNo": "2",
+            "Qno": "2"
+        },
+        {
+            "headingNo": "6",
+            "subheadNo": "2",
+            "Qno": "3"
+        },
+        {
+            "headingNo": "6",
+            "subheadNo": "2",
+            "Qno": "4"
+        },
+        {
+            "headingNo": "6",
+            "subheadNo": "2",
+            "Qno": "5"
+        },
+        {
+            "headingNo": "6",
+            "subheadNo": "2",
+            "Qno": "6"
+        },
+        {
+            "headingNo": "6",
+            "subheadNo": "2",
+            "Qno": "7"
+        },
+        {
+            "headingNo": "6",
+            "subheadNo": "2",
+            "Qno": "9"
+        }
+    ],
+    "QC": [
+        {
+            "headingNo": "2",
+            "subheadNo": "1",
+            "Qno": "1"
+        },
+        {
+            "headingNo": "2",
+            "subheadNo": "1",
+            "Qno": "2"
+        },
+        {
+            "headingNo": "2",
+            "subheadNo": "1",
+            "Qno": "3"
+        },
+        {
+            "headingNo": "2",
+            "subheadNo": "1",
+            "Qno": "4"
+        },
+        {
+            "headingNo": "2",
+            "subheadNo": "2",
+            "Qno": "1"
+        },
+        {
+            "headingNo": "2",
+            "subheadNo": "2",
+            "Qno": "2"
+        },
+        {
+            "headingNo": "2",
+            "subheadNo": "2",
+            "Qno": "3"
+        },
+        {
+            "headingNo": "2",
+            "subheadNo": "2",
+            "Qno": "4"
+        },
+        {
+            "headingNo": "2",
+            "subheadNo": "2",
+            "Qno": "5"
+        },
+        {
+            "headingNo": "9",
+            "subheadNo": "1",
+            "Qno": "1"
+        },
+        {
+            "headingNo": "9",
+            "subheadNo": "1",
+            "Qno": "2"
+        },
+        {
+            "headingNo": "9",
+            "subheadNo": "1",
+            "Qno": "3"
+        },
+        {
+            "headingNo": "9",
+            "subheadNo": "1",
+            "Qno": "4"
+        },
+        {
+            "headingNo": "9",
+            "subheadNo": "2",
+            "Qno": "2"
+        },
+        {
+            "headingNo": "9",
+            "subheadNo": "2",
+            "Qno": "3"
+        },
+        {
+            "headingNo": "9",
+            "subheadNo": "2",
+            "Qno": "4"
+        }
+    ],
+    "RnD": [
+        {
+            "headingNo": "2",
+            "subheadNo": "1",
+            "Qno": "1"
+        },
+        {
+            "headingNo": "2",
+            "subheadNo": "1",
+            "Qno": "2"
+        },
+        {
+            "headingNo": "2",
+            "subheadNo": "1",
+            "Qno": "4"
+        },
+        {
+            "headingNo": "2",
+            "subheadNo": "2",
+            "Qno": "4"
+        },
+        {
+            "headingNo": "6",
+            "subheadNo": "2",
+            "Qno": "6"
+        },
+        {
+            "headingNo": "9",
+            "subheadNo": "2",
+            "Qno": "4"
+        }
+    ],
+    "SALES": [
+        {
+            "headingNo": "2",
+            "subheadNo": "2",
+            "Qno": "5"
+        },
+        {
+            "headingNo": "9",
+            "subheadNo": "1",
+            "Qno": "2"
+        },
+        {
+            "headingNo": "9",
+            "subheadNo": "1",
+            "Qno": "3"
+        },
+        {
+            "headingNo": "9",
+            "subheadNo": "1",
+            "Qno": "4"
+        },
+        {
+            "headingNo": "9",
+            "subheadNo": "2",
+            "Qno": "2"
+        }
+    ],
+    "LOGISTICS": [{
+        "headingNo": "2",
+        "subheadNo": "2",
+        "Qno": "5"
+    }],
+    "SAFETY": [
+        {
+            "headingNo": "3",
+            "subheadNo": "1",
+            "Qno": "10"
+        },
+        {
+            "headingNo": "3",
+            "subheadNo": "1",
+            "Qno": "11"
+        },
+        {
+            "headingNo": "3",
+            "subheadNo": "1",
+            "Qno": "12"
+        },
+        {
+            "headingNo": "3",
+            "subheadNo": "1",
+            "Qno": "13"
+        },
+        {
+            "headingNo": "3",
+            "subheadNo": "1",
+            "Qno": "14"
+        },
+        {
+            "headingNo": "3",
+            "subheadNo": "1",
+            "Qno": "15"
+        },
+        {
+            "headingNo": "6",
+            "subheadNo": "2",
+            "Qno": "8"
+        }
+    ],
+    "ADMIN": [
+        {
+            "headingNo": "4",
+            "subheadNo": "1",
+            "Qno": "1"
+        },
+        {
+            "headingNo": "4",
+            "subheadNo": "1",
+            "Qno": "2"
+        },
+        {
+            "headingNo": "4",
+            "subheadNo": "2",
+            "Qno": "1"
+        },
+        {
+            "headingNo": "4",
+            "subheadNo": "2",
+            "Qno": "2"
+        },
+        {
+            "headingNo": "4",
+            "subheadNo": "2",
+            "Qno": "3"
+        }
+    ],
+    "PRODUCTION": [{
+        "headingNo": "6",
+        "subheadNo": "1",
+        "Qno": "1"
+    }],
+    "PURCHASE": [
+        {
+            "headingNo": "8",
+            "subheadNo": "1",
+            "Qno": "4"
+        },
+        {
+            "headingNo": "8",
+            "subheadNo": "2",
+            "Qno": "3"
+        }
+    ],
+    "IT": [
+        {
+            "headingNo": "9",
+            "subheadNo": "1",
+            "Qno": "3"
+        },
+        {
+            "headingNo": "9",
+            "subheadNo": "1",
+            "Qno": "5"
+        },
+        {
+            "headingNo": "9",
+            "subheadNo": "1",
+            "Qno": "6"
+        },
+        {
+            "headingNo": "9",
+            "subheadNo": "2",
+            "Qno": "1"
+        },
+        {
+            "headingNo": "9",
+            "subheadNo": "2",
+            "Qno": "2"
+        },
+        {
+            "headingNo": "9",
+            "subheadNo": "2",
+            "Qno": "3"
+        },
+        {
+            "headingNo": "9",
+            "subheadNo": "2",
+            "Qno": "5"
+        }
+    ]
+}

@@ -1,0 +1,6 @@
+fastapi~=0.114.0
+pydantic~=2.9.0
+werkzeug~=3.0.4
+pymongo~=4.8.0
+streamlit~=1.38.0
+pandas~=2.2.2
