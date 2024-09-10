@@ -46,7 +46,7 @@ def get_user_role(email):
 
         user = users_collection.find_one({"email": email})
         if user:
-            return user.get('role', 'user')
+            return user.get('role', 'user'), user['access']
         return None
     except PyMongoError as e:
         raise Exception(f"An error occurred while fetching the user's role: {e}")
@@ -101,7 +101,7 @@ def get_all_users():
         users_collection = db['UsersCred']
 
         # Find all users and return a list of dictionaries containing email and role
-        users = users_collection.find({}, {"email": 1, "role": 1, "_id": 0})
+        users = users_collection.find({}, {"email": 1, "role": 1, "access": 1, "_id": 0})
 
         return list(users)
     except PyMongoError as e:
@@ -182,32 +182,59 @@ def get_question(headingNo, subheadNo, Qno):
         raise Exception(f"An error occurred while fetching the question type: {e}")
 
 
-def enter_single(ans):
+def enter_single(ans, question_df):
     """
     Inserts a single entry into the collection.
     """
     db = connect_to_db()
     collection = db['CC']
     try:
-        result = collection.insert_one({"answer": ans})
-        return f"Inserted document with id: {result.inserted_id}"
+        query = {"headingNo": question_df['headingNo'], "subheadNo": question_df['subheadNo'], "Qno": question_df['Qno']}
+        update = {"$set": {"answer": ans}}
+        collection.update_one(query, update, upsert=True)
+        return "Answer inserted."
     except Exception as e:
-        return f"An error occurred: {e}"
+        return False
 
-def enter_table(list_of_list):
+
+def enter_table(list_of_df, question_df):
     """
-    Inserts multiple entries from a list of lists into the collection.
+    Inserts multiple entries from a list of df into the collection.
     """
     db = connect_to_db()
     collection = db['CC']
+    arr = list_of_df.values
+    arr = arr[:, 1:]
+    arr = arr.tolist()
     try:
-        documents = [{"row": row} for row in list_of_list]
-        result = collection.insert_many(documents)
-        return f"Inserted {len(result.inserted_ids)} documents."
+        query = {"headingNo": question_df['headingNo'], "subheadNo": question_df['subheadNo'], "Qno": question_df['Qno']}
+        update = {"$set": {"answer": arr}}
+        collection.update_one(query, update, upsert=True)
+        return "Table inserted."
     except Exception as e:
-        return f"An error occurred: {e}"
+        print(e)
+        return False
 
-def enter_subq(list_of_subq):
+def enter_anytable(list_of_df, question_df):
+    """
+        Inserts multiple entries from a list of df into the collection.
+        """
+    db = connect_to_db()
+    collection = db['CC']
+    arr = list_of_df.values
+    arr = arr.tolist()
+    try:
+        query = {"headingNo": question_df['headingNo'], "subheadNo": question_df['subheadNo'],
+                 "Qno": question_df['Qno']}
+        update = {"$set": {"answer": arr}}
+        collection.update_one(query, update, upsert=True)
+        return "Table inserted."
+    except Exception as e:
+        print(e)
+        return False
+
+
+def enter_subq(list_of_subq, question_df):
     """
     Updates a collection or inserts sub-questions (list).
     This function assumes an update or insert-like behavior.
@@ -215,11 +242,61 @@ def enter_subq(list_of_subq):
     db = connect_to_db()
     collection = db['CC']
     try:
-        for subq in list_of_subq:
-            # You can specify a query and an update action
-            query = {"sub_question": subq}
-            update = {"$set": {"sub_question": subq}}
-            collection.update_one(query, update, upsert=True)  # upsert=True to insert if it doesn't exist
-        return "Sub-questions inserted or updated."
+        print(list_of_subq)
+        query = {"headingNo": question_df['headingNo'], "subheadNo": question_df['subheadNo'], "Qno": question_df['Qno']}
+        update = {"$set": {"answer": list_of_subq}}
+        collection.update_one(query, update, upsert=True)
+        return "Sub-questions inserted."
     except Exception as e:
-        return f"An error occurred: {e}"
+        return False
+
+
+def get_answer_list(headingNo, subheadNo):
+    try:
+        db = connect_to_db()
+        collection = db['CC']
+        headingNo = int(headingNo)
+        subheadNo = int(subheadNo)
+        query = {"headingNo": headingNo, "subheadNo": subheadNo}
+        answer_list = collection.find(query)
+        return answer_list
+    except PyMongoError as e:
+        raise Exception(f"An error occurred while fetching all questions: {e}")
+
+def get_answer(headingNo, subheadNo, Qno):
+    try:
+        db = connect_to_db()
+        collection = db['CC']
+        headingNo = int(headingNo)
+        subheadNo = int(subheadNo)
+        Qno = int(Qno)
+        query = {"headingNo": headingNo, "subheadNo": subheadNo, "Qno": Qno}
+        answer = collection.find_one(query)
+        return answer
+    except PyMongoError as e:
+        raise Exception(f"An error occurred while fetching all questions: {e}")
+
+def delete_answer(headingNo, subheadNo, Qno):
+    try:
+        db = connect_to_db()
+        collection = db['CC']
+        headingNo = int(headingNo)
+        subheadNo = int(subheadNo)
+        Qno = int(Qno)
+        query = {"headingNo": headingNo, "subheadNo": subheadNo, "Qno": Qno}
+        collection.delete_one(query)
+        return "Answer deleted."
+    except PyMongoError as e:
+        raise Exception(f"An error occurred while deleting the answer: {e}")
+
+def remove_access(email):
+    try:
+        db = connect_to_db()
+        users_collection = db['UsersCred']
+        query = {"email": email}
+        update = {"$set": {"access": False}}
+        print(query, update)
+        users_collection.update_one(query, update, upsert=True)
+        return "User removed."
+    except PyMongoError as e:
+        raise Exception(f"An error occurred while removing the user: {e}")

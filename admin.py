@@ -25,9 +25,9 @@ def create_user():
 def display_logs():
     with st.spinner("Fetching logs..."):
         logs = get_logs()
-
-        if len(list(logs)) > 0:
-            df = pd.DataFrame(list(logs))  # Convert logs to a DataFrame
+        logs_list = list(logs)
+        if len(logs_list) > 0:
+            df = pd.DataFrame(logs_list)
             df['timestamp'] = df['timestamp'].apply(lambda x: x.strftime('%Y-%m-%d %H:%M:%S'))
             df = df[['action', 'user_email', 'details', 'timestamp']]  # Select relevant columns
             st.table(df)
@@ -59,7 +59,7 @@ def change_password():
 
 
 # Function to show existing users
-def display_users():
+def display_users_admin():
     with st.spinner("Fetching users..."):
         try:
             users = get_all_users()
