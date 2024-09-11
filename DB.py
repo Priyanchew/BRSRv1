@@ -7,14 +7,15 @@ from dotenv import load_dotenv
 import os
 load_dotenv()
 
-# Access the environment variables
-database_url = os.getenv('DATABASE_URL')
+database_pass = os.getenv('DATABASE_PASS')
+uri=f"mongodb+srv://priyanshu6beta:{database_pass}@brsrcluster.wycfx0h.mongodb.net/?retryWrites=true&w=majority&appName=BRSRCluster"
+
 
 # Connect to the MongoDB database
 def connect_to_db():
     try:
         client = MongoClient(
-            database_url
+            uri
         )
         db = client["Carbon-crunch"]
         return db
@@ -91,7 +92,8 @@ def create_new_user(email, password, role):
         user_data = {
             "email": email,
             "password": hashed_password,
-            "role": role
+            "role": role,
+            "access": True
         }
         users_collection.insert_one(user_data)
 
@@ -308,9 +310,18 @@ def remove_access(email):
         users_collection = db['UsersCred']
         query = {"email": email}
         update = {"$set": {"access": False}}
-        print(query, update)
         users_collection.update_one(query, update, upsert=True)
         log_action("Submitted", email, f"User of role {st.session_state['role']} with email {email} has submitted their part of the report.")
         return "User removed."
     except PyMongoError as e:
         raise Exception(f"An error occurred while removing the user: {e}")
+
+def submitted_q_by_email(email):
+    try:
+        db = connect_to_db()
+        collection = db['CC']
+        query = {"user_email": email}
+        answer_list = collection.find(query)
+        return list(answer_list)
+    except PyMongoError as e:
+        raise Exception(f"An error occurred while fetching all questions: {e}")

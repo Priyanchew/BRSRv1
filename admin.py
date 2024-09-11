@@ -1,6 +1,6 @@
 import streamlit as st
 import pandas as pd
-from DB import create_new_user, get_logs, change_user_password, get_all_users
+from DB import create_new_user, get_logs, change_user_password, get_all_users, submitted_q_by_email
 
 
 def create_user():
@@ -70,3 +70,15 @@ def display_users_admin():
                 st.write("No users found.")
         except Exception as e:
             st.error(f"Error fetching users: {e}")
+
+def review_entries():
+    users = get_all_users()
+    filtered_users = [user for user in users if user.get('access') == False]
+    user_display = [f"{user['email']} ({user['role']})" for user in filtered_users]
+    selected = st.selectbox("Select User", user_display)
+    st.write(f"Selected user: {selected.split(' ')[0]}")
+    answers = submitted_q_by_email(selected.split(" ")[0])
+    for answer in answers:
+        st.write(answer['answer'])
+
+
