@@ -2,13 +2,19 @@ from pymongo import MongoClient
 from pymongo.errors import ConnectionFailure, PyMongoError
 from werkzeug.security import generate_password_hash, check_password_hash
 import datetime
+import streamlit as st
+from dotenv import load_dotenv
+import os
+load_dotenv()
 
+# Access the environment variables
+database_url = os.getenv('DATABASE_URL')
 
 # Connect to the MongoDB database
 def connect_to_db():
     try:
         client = MongoClient(
-            "mongodb+srv://priyanshu6beta:Rfamo6LNGANVH6t2@brsrcluster.wycfx0h.mongodb.net/?retryWrites=true&w=majority&appName=BRSRCluster"
+            database_url
         )
         db = client["Carbon-crunch"]
         return db
@@ -189,7 +195,8 @@ def enter_single(ans, question_df):
     db = connect_to_db()
     collection = db['CC']
     try:
-        query = {"headingNo": question_df['headingNo'], "subheadNo": question_df['subheadNo'], "Qno": question_df['Qno']}
+        query = {"headingNo": question_df['headingNo'], "subheadNo": question_df['subheadNo'],
+                 "Qno": question_df['Qno'], "user_email": st.session_state['email']}
         update = {"$set": {"answer": ans}}
         collection.update_one(query, update, upsert=True)
         return "Answer inserted."
@@ -207,13 +214,15 @@ def enter_table(list_of_df, question_df):
     arr = arr[:, 1:]
     arr = arr.tolist()
     try:
-        query = {"headingNo": question_df['headingNo'], "subheadNo": question_df['subheadNo'], "Qno": question_df['Qno']}
+        query = {"headingNo": question_df['headingNo'], "subheadNo": question_df['subheadNo'],
+                 "Qno": question_df['Qno'], "user_email": st.session_state['email']}
         update = {"$set": {"answer": arr}}
         collection.update_one(query, update, upsert=True)
         return "Table inserted."
     except Exception as e:
         print(e)
         return False
+
 
 def enter_anytable(list_of_df, question_df):
     """
@@ -225,7 +234,7 @@ def enter_anytable(list_of_df, question_df):
     arr = arr.tolist()
     try:
         query = {"headingNo": question_df['headingNo'], "subheadNo": question_df['subheadNo'],
-                 "Qno": question_df['Qno']}
+                 "Qno": question_df['Qno'], "user_email": st.session_state['email']}
         update = {"$set": {"answer": arr}}
         collection.update_one(query, update, upsert=True)
         return "Table inserted."
@@ -243,7 +252,8 @@ def enter_subq(list_of_subq, question_df):
     collection = db['CC']
     try:
         print(list_of_subq)
-        query = {"headingNo": question_df['headingNo'], "subheadNo": question_df['subheadNo'], "Qno": question_df['Qno']}
+        query = {"headingNo": question_df['headingNo'], "subheadNo": question_df['subheadNo'],
+                 "Qno": question_df['Qno'], "user_email": st.session_state['email']}
         update = {"$set": {"answer": list_of_subq}}
         collection.update_one(query, update, upsert=True)
         return "Sub-questions inserted."
@@ -263,6 +273,7 @@ def get_answer_list(headingNo, subheadNo):
     except PyMongoError as e:
         raise Exception(f"An error occurred while fetching all questions: {e}")
 
+
 def get_answer(headingNo, subheadNo, Qno):
     try:
         db = connect_to_db()
@@ -275,6 +286,7 @@ def get_answer(headingNo, subheadNo, Qno):
         return answer
     except PyMongoError as e:
         raise Exception(f"An error occurred while fetching all questions: {e}")
+
 
 def delete_answer(headingNo, subheadNo, Qno):
     try:
@@ -289,6 +301,7 @@ def delete_answer(headingNo, subheadNo, Qno):
     except PyMongoError as e:
         raise Exception(f"An error occurred while deleting the answer: {e}")
 
+
 def remove_access(email):
     try:
         db = connect_to_db()
@@ -297,6 +310,7 @@ def remove_access(email):
         update = {"$set": {"access": False}}
         print(query, update)
         users_collection.update_one(query, update, upsert=True)
+        log_action("Submitted", email, f"User of role {st.session_state['role']} with email {email} has submitted their part of the report.")
         return "User removed."
     except PyMongoError as e:
         raise Exception(f"An error occurred while removing the user: {e}")

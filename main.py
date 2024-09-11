@@ -302,12 +302,18 @@ def display_users(role):
                                icons=['1-square', '2-square', '3-square', '4-square', '5-square', '6-square', '7-square',
                                       '8-square', '9-square'],
                                menu_icon="punch", default_index=0, orientation="vertical")
-        if st.session_state['access']:
-            if selected2 == "Entry":
+        if selected2 == "Entry":
+            if st.session_state['access']:
                 entry(selected, questions)
-            elif selected2 == "Saved":
+            else:
+                st.error("Your answers are already submitted. Please wait while admin reviews them.")
+        elif selected2 == "Saved":
+            if st.session_state['access']:
                 saved(selected, questions)
-            elif selected2 == "Submit":
+            else:
+                st.error("Your answers are already submitted. Please wait while admin reviews them.")
+        elif selected2 == "Submit":
+            if st.session_state['access']:
                 st.markdown(f"<h2 style='text-align: left;'>Submit all the Entries</h2>", unsafe_allow_html=True)
                 st.write("Please make sure you have entered all the answers before submitting. Your access will be removed after submission.")
                 email = st.text_input(label="Email:", value="", key="email",
@@ -316,19 +322,18 @@ def display_users(role):
                                          type="password")
                 submit_button = st.button("Login", type="primary", on_click=submit_Clicked,
                                           args=(email, password))
-            elif selected2 == "Logout":
-                st.markdown("<h2 style='text-align: left;'>Log out</h2>", unsafe_allow_html=True)
-                if st.button("Logout"):
-                    st.session_state['loggedIn'] = False
-                    st.session_state['role'] = None
-                    st.session_state['email'] = None
-                    st.session_state['access'] = None
-                    st.session_state['saved_questions'] = []
-                    st.success("Logged out successfully.")
-                    st.rerun()
-
-        else:
-            st.error("Your answers are already submitted. Please wait while admin reviews them.")
+            else:
+                st.error("Your answers are already submitted. Please wait while admin reviews them.")
+        elif selected2 == "Logout":
+            st.markdown("<h2 style='text-align: left;'>Log out</h2>", unsafe_allow_html=True)
+            if st.button("Logout"):
+                st.session_state['loggedIn'] = False
+                st.session_state['role'] = None
+                st.session_state['email'] = None
+                st.session_state['access'] = None
+                st.session_state['saved_questions'] = []
+                st.success("Logged out successfully.")
+                st.rerun()
 
     else:
         st.error("No questions available for this role.")
