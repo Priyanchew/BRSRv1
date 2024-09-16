@@ -1,9 +1,7 @@
 import streamlit as st
 import json
 from streamlit_option_menu import option_menu
-from admin import create_user, change_password, display_users_admin, display_logs, review_entries
 from DB import authenticate_user, get_user_role, remove_access
-from user import entry, saved
 
 st.set_page_config(
     page_title="Carbon Crunch",
@@ -16,7 +14,6 @@ st.set_page_config(
     }
 )
 
-# Load the JSON file with questions for each role
 with open('roles.json', 'r') as f:
     role_questions = json.load(f)
 
@@ -28,10 +25,11 @@ def LoggedIn_Clicked(username, password):
         try:
             if authenticate_user(username, password):
                 st.session_state['loggedIn'] = True
-                user_role, access = get_user_role(username)
+                user_role, access, admin = get_user_role(username)
                 st.session_state['role'] = user_role
                 st.session_state['email'] = username
                 st.session_state['access'] = access
+                st.session_state['admin'] = admin
             else:
                 st.error("Invalid username or password.")
         except Exception as e:
@@ -95,14 +93,16 @@ st.markdown("""
 
 
 def admin_page():
-    st.title("Admin Dashboard")
+    from admin import create_user, change_password, display_users_admin, display_logs, review_entries
+    role = st.session_state['role']
+    st.title("Company Admin Dashboard")
 
     selected = option_menu(None, ["Add User", "Change Password", "Review", "log", "Existing roles"],
                            icons=['plus', 'eraser', "", "journal-text", "person-fill"],
                            menu_icon="punch", default_index=0, orientation="horizontal")
 
     if selected == "Add User":
-        st.markdown("<h2 style='text-align: left;'>Manage Users</h2>", unsafe_allow_html=True)
+        st.markdown("<h2 style='text-align: left;'>Add Users</h2>", unsafe_allow_html=True)
         create_user()
     elif selected == "Change Password":
         st.markdown("<h2 style='text-align: left;'>Change User Password</h2>", unsafe_allow_html=True)
@@ -115,12 +115,13 @@ def admin_page():
         display_logs()
     elif selected == "Existing roles":
         st.markdown("<h2 style='text-align: left;'>Existing Users</h2>", unsafe_allow_html=True)
-        display_users_admin()
+        display_users_admin(role)
 
 
 
 def display_users(role):
-    st.markdown(f"<h2 style='text-align: left;'>{role} Dashboard</h2>", unsafe_allow_html=True)
+    from user import entry, saved
+    st.title(f"{role} Dashboard")
 
     if role in role_questions:
         questions = role_questions[role]
@@ -170,17 +171,42 @@ def display_users(role):
     else:
         st.error("No questions available for this role.")
 
+def dept_admin():
+    from DeptAdmin import create_user_dept
+    from admin import change_password, display_users_admin
+
+    role = st.session_state['role']
+    st.title(f"{role} Admin Dashboard")
+
+    selected = option_menu(None, ["Add User", "Change Password", "Review", "log", "Existing users"],
+                           icons=['plus', 'eraser', "", "journal-text", "person-fill"],
+                           menu_icon="punch", default_index=0, orientation="horizontal")
+
+    if selected == "Add User":
+        st.markdown("<h2 style='text-align: left;'>Create Users for your Dept.</h2>", unsafe_allow_html=True)
+        create_user_dept(role)
+    elif selected == "Change Password":
+        st.markdown("<h2 style='text-align: left;'>Change User Password</h2>", unsafe_allow_html=True)
+        change_password()
+    elif selected == "Review":
+        st.markdown("<h2 style='text-align: left;'>Review Entries</h2>", unsafe_allow_html=True)
+    elif selected == "log":
+        st.markdown("<h2 style='text-align: left;'>Activity Logs</h2>", unsafe_allow_html=True)
+    elif selected == "Existing roles":
+        st.markdown("<h2 style='text-align: left;'>Existing Users</h2>", unsafe_allow_html=True)
+        display_users_admin(role)
+
 
 def main():
-    # Page routing based on role
+
     if st.session_state['loggedIn']:
         if st.session_state['role'] == 'admin':
             admin_page()
-        else:
-            # Other roles get their specific questions
+        elif st.session_state['role'] != 'admin' and not st.session_state['admin']:
             display_users(st.session_state['role'])
+        else:
+            dept_admin()
     else:
-        # Show login page if not logged in
         with st.container():
             col1, col2, col3 = st.columns([1, 3, 1])
 

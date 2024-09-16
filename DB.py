@@ -53,7 +53,7 @@ def get_user_role(email):
 
         user = users_collection.find_one({"email": email})
         if user:
-            return user.get('role', 'user'), user['access']
+            return user.get('role', 'user'), user['access'], user.get('admin', False)
         return None
     except PyMongoError as e:
         raise Exception(f"An error occurred while fetching the user's role: {e}")
@@ -75,7 +75,7 @@ def get_logs():
 
 
 # Create a new user in the database
-def create_new_user(email, password, role):
+def create_new_user(email, password, role, admin):
     try:
         db = connect_to_db()
         users_collection = db['UsersCred']
@@ -93,23 +93,30 @@ def create_new_user(email, password, role):
             "email": email,
             "password": hashed_password,
             "role": role,
-            "access": True
+            "access": True,
+            "admin": admin
         }
         users_collection.insert_one(user_data)
 
-        log_action("create_user", email, f"User with role {role} was created.")
+        if admin:
+            log_action("create_dept_admin", email, f"Admin for {role} Dept. was created.")
+        else:
+            log_action("create_user", email, f"User with role {role} was created.")
     except PyMongoError as e:
         raise Exception(f"An error occurred while creating the user: {e}")
 
 
 # Fetch all users and their roles from the database
-def get_all_users():
+def get_all_users(role):
     try:
         db = connect_to_db()
         users_collection = db['UsersCred']
 
         # Find all users and return a list of dictionaries containing email and role
-        users = users_collection.find({}, {"email": 1, "role": 1, "access": 1, "_id": 0})
+        if role == "admin":
+            users = users_collection.find({}, {"email": 1, "role": 1, "access": 1,"admin": 1, "_id": 0})
+        else:
+            users = users_collection.find({"role": role}, {"email": 1, "role": 1, "access": 1, "admin": 1, "_id": 0})
 
         return list(users)
     except PyMongoError as e:
@@ -253,7 +260,6 @@ def enter_subq(list_of_subq, question_df):
     db = connect_to_db()
     collection = db['CC']
     try:
-        print(list_of_subq)
         query = {"headingNo": question_df['headingNo'], "subheadNo": question_df['subheadNo'],
                  "Qno": question_df['Qno'], "user_email": st.session_state['email']}
         update = {"$set": {"answer": list_of_subq}}
@@ -325,3 +331,13 @@ def submitted_q_by_email(email):
         return list(answer_list)
     except PyMongoError as e:
         raise Exception(f"An error occurred while fetching all questions: {e}")
+
+def get_role_users(role):
+    try:
+        db = connect_to_db()
+        users_collection = db['UsersCred']
+        query = {"role": role}
+        users = users_collection.find(query)
+        return list(users)
+    except PyMongoError as e:
+        raise Exception(f"An error occurred while fetching all users: {e}")

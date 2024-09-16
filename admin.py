@@ -7,7 +7,7 @@ def create_user():
     with st.form(key="new_user_form"):
         new_email = st.text_input("Email", placeholder="Enter user email")
         new_password = st.text_input("Password", placeholder="Enter user password", type="password")
-        new_role = st.selectbox("Assign Role", ["HR", "LAW", "FINANCE", "LEGAL", "ENVIRONMENT", "QC", "RnD", "SALES",
+        new_role = st.selectbox("Assign Dept. (Admin for that dept.)", ["HR", "LAW", "FINANCE", "LEGAL", "ENVIRONMENT", "QC", "RnD", "SALES",
                                                 "LOGISTICS", "SAFETY", "ADMIN", "PRODUCTION", "PURCHASE", "IT", "admin"])
         create_button = st.form_submit_button("Create User")
 
@@ -16,7 +16,7 @@ def create_user():
                 st.warning("Please enter all the details.")
             else:
                 try:
-                    create_new_user(new_email, new_password, new_role)
+                    create_new_user(new_email, new_password, new_role, True)
                     st.success(f"User {new_email} created successfully with role {new_role}")
                 except Exception as e:
                     st.error(f"Error creating user: {e}")
@@ -59,10 +59,10 @@ def change_password():
 
 
 # Function to show existing users
-def display_users_admin():
+def display_users_admin(role):
     with st.spinner("Fetching users..."):
         try:
-            users = get_all_users()
+            users = get_all_users(role)
             if users:
                 df = pd.DataFrame(users)  # Assuming users is a list of dictionaries with 'email' and 'role'
                 st.table(df)
@@ -75,10 +75,13 @@ def review_entries():
     users = get_all_users()
     filtered_users = [user for user in users if user.get('access') == False]
     user_display = [f"{user['email']} ({user['role']})" for user in filtered_users]
-    selected = st.selectbox("Select User", user_display)
-    st.write(f"Selected user: {selected.split(' ')[0]}")
-    answers = submitted_q_by_email(selected.split(" ")[0])
-    for answer in answers:
-        st.write(answer['answer'])
+    selected = st.selectbox("Select Dept.", user_display)
+    if selected:
+        st.write(f"Selected Dept.: {selected.split(' ')[0]}")
+        answers = submitted_q_by_email(selected.split(" ")[0])
+        for answer in answers:
+            st.write(answer['answer'])
+    else:
+        st.warning("No Dept. selected.")
 
 
